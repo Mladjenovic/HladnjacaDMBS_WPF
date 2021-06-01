@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HladnjacaDBStoreContainer" CdmEntityContainer="HladnjacaDBContext">
+    <EntitySetMapping Name="Hladnjacas">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Hladnjaca)">
+        <MappingFragment StoreEntitySet="Hladnjacas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NazivHladnjace" ColumnName="NazivHladnjace" />
+          <ScalarProperty Name="OrganizacionaJedinicaId" ColumnName="OrganizacionaJedinicaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Komoras">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Komora)">
+        <MappingFragment StoreEntitySet="Komoras">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="HladnjacaId" ColumnName="HladnjacaId" />
+          <ScalarProperty Name="NazivKomore" ColumnName="NazivKomore" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrganizacionaJedinicas">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.OrganizacionaJedinica)">
+        <MappingFragment StoreEntitySet="OrganizacionaJedinicas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="OrganizacionaJedinicaId_nadredjena" ColumnName="OrganizacionaJedinicaId_nadredjena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zaposlenis">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Zaposleni)">
+        <MappingFragment StoreEntitySet="Zaposlenis">
+          <ScalarProperty Name="Mbr" ColumnName="Mbr" />
+          <ScalarProperty Name="Jmbg" ColumnName="Jmbg" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="Kategorija" ColumnName="Kategorija" />
+          <ScalarProperty Name="HladnjacaId" ColumnName="HladnjacaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.PoljoprivredniTehnicar)">
+        <MappingFragment StoreEntitySet="Zaposlenis_PoljoprivredniTehnicar">
+          <ScalarProperty Name="Mbr" ColumnName="Mbr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Magacioner)">
+        <MappingFragment StoreEntitySet="Zaposlenis_Magacioner">
+          <ScalarProperty Name="Mbr" ColumnName="Mbr" />
+          <ScalarProperty Name="ObucenZaViljuskar" ColumnName="ObucenZaViljuskar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Klijents">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Klijent)">
+        <MappingFragment StoreEntitySet="Klijents">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="Jmbg" ColumnName="Jmbg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ugovors">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Ugovor)">
+        <MappingFragment StoreEntitySet="Ugovors">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="KlijentId" ColumnName="KlijentId" />
+          <ScalarProperty Name="HladnjacaId" ColumnName="HladnjacaId" />
+          <ScalarProperty Name="Tip" ColumnName="Tip" />
+          <ScalarProperty Name="DatumPotpisivanja" ColumnName="DatumPotpisivanja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kartons">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Karton)">
+        <MappingFragment StoreEntitySet="Kartons">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UgovorId" ColumnName="UgovorId" />
+          <ScalarProperty Name="UgovorKlijentId" ColumnName="UgovorKlijentId" />
+          <ScalarProperty Name="UgovorHladnjacaId" ColumnName="UgovorHladnjacaId" />
+          <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Voces">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Voce)">
+        <MappingFragment StoreEntitySet="Voces">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Predajes">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Predaje)">
+        <MappingFragment StoreEntitySet="Predajes">
+          <ScalarProperty Name="KlijentId" ColumnName="KlijentId" />
+          <ScalarProperty Name="VoceId" ColumnName="VoceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Otkupljujes">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Otkupljuje)">
+        <MappingFragment StoreEntitySet="Otkupljujes">
+          <ScalarProperty Name="PoljoprivredniTehnicarMbr" ColumnName="PoljoprivredniTehnicarMbr" />
+          <ScalarProperty Name="VoceId" ColumnName="VoceId" />
+          <ScalarProperty Name="KartonId" ColumnName="KartonId" />
+          <ScalarProperty Name="KartonUgovorId" ColumnName="KartonUgovorId" />
+          <ScalarProperty Name="KartonUgovorKlijentId" ColumnName="KartonUgovorKlijentId" />
+          <ScalarProperty Name="KartonUgovorHladnjacaId" ColumnName="KartonUgovorHladnjacaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transports">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Transport)">
+        <MappingFragment StoreEntitySet="Transports">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrenosiSes">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.PrenosiSe)">
+        <MappingFragment StoreEntitySet="PrenosiSes">
+          <ScalarProperty Name="TransportId" ColumnName="TransportId" />
+          <ScalarProperty Name="OtkupljujePoljoprivredniTehnicarMbr" ColumnName="OtkupljujePoljoprivredniTehnicarMbr" />
+          <ScalarProperty Name="OtkupljujeVoceId" ColumnName="OtkupljujeVoceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Obavljas">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Obavlja)">
+        <MappingFragment StoreEntitySet="Obavljas">
+          <ScalarProperty Name="MagacionerMbr" ColumnName="MagacionerMbr" />
+          <ScalarProperty Name="TransportId" ColumnName="TransportId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SmestaSes">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.SmestaSe)">
+        <MappingFragment StoreEntitySet="SmestaSes">
+          <ScalarProperty Name="TransportId" ColumnName="TransportId" />
+          <ScalarProperty Name="KomoraHladnjacaId" ColumnName="KomoraHladnjacaId" />
+          <ScalarProperty Name="KomoraId" ColumnName="KomoraId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

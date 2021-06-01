@@ -1,0 +1,1176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HladnjacaDB.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="HladnjacaDBStoreContainer">
+    <EntitySet Name="Hladnjacas" EntityType="HladnjacaDB.Store.Hladnjacas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Komoras" EntityType="HladnjacaDB.Store.Komoras" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrganizacionaJedinicas" EntityType="HladnjacaDB.Store.OrganizacionaJedinicas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zaposlenis" EntityType="HladnjacaDB.Store.Zaposlenis" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Klijents" EntityType="HladnjacaDB.Store.Klijents" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ugovors" EntityType="HladnjacaDB.Store.Ugovors" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Kartons" EntityType="HladnjacaDB.Store.Kartons" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Voces" EntityType="HladnjacaDB.Store.Voces" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Predajes" EntityType="HladnjacaDB.Store.Predajes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Otkupljujes" EntityType="HladnjacaDB.Store.Otkupljujes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Transports" EntityType="HladnjacaDB.Store.Transports" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrenosiSes" EntityType="HladnjacaDB.Store.PrenosiSes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Obavljas" EntityType="HladnjacaDB.Store.Obavljas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SmestaSes" EntityType="HladnjacaDB.Store.SmestaSes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zaposlenis_PoljoprivredniTehnicar" EntityType="HladnjacaDB.Store.Zaposlenis_PoljoprivredniTehnicar" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zaposlenis_Magacioner" EntityType="HladnjacaDB.Store.Zaposlenis_Magacioner" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="HladnjacaKomora" Association="HladnjacaDB.Store.HladnjacaKomora">
+      <End Role="Hladnjaca" EntitySet="Hladnjacas" />
+      <End Role="Komora" EntitySet="Komoras" />
+    </AssociationSet>
+    <AssociationSet Name="HladnjacaOrganizacionaJedinica" Association="HladnjacaDB.Store.HladnjacaOrganizacionaJedinica">
+      <End Role="Hladnjaca" EntitySet="Hladnjacas" />
+      <End Role="OrganizacionaJedinica" EntitySet="OrganizacionaJedinicas" />
+    </AssociationSet>
+    <AssociationSet Name="KlijentUgovor" Association="HladnjacaDB.Store.KlijentUgovor">
+      <End Role="Klijent" EntitySet="Klijents" />
+      <End Role="Ugovor" EntitySet="Ugovors" />
+    </AssociationSet>
+    <AssociationSet Name="HladnjacaUgovor" Association="HladnjacaDB.Store.HladnjacaUgovor">
+      <End Role="Hladnjaca" EntitySet="Hladnjacas" />
+      <End Role="Ugovor" EntitySet="Ugovors" />
+    </AssociationSet>
+    <AssociationSet Name="HladnjacaZaposleni" Association="HladnjacaDB.Store.HladnjacaZaposleni">
+      <End Role="Hladnjaca" EntitySet="Hladnjacas" />
+      <End Role="Zaposleni" EntitySet="Zaposlenis" />
+    </AssociationSet>
+    <AssociationSet Name="UgovorKarton" Association="HladnjacaDB.Store.UgovorKarton">
+      <End Role="Ugovor" EntitySet="Ugovors" />
+      <End Role="Karton" EntitySet="Kartons" />
+    </AssociationSet>
+    <AssociationSet Name="KlijentPredaje" Association="HladnjacaDB.Store.KlijentPredaje">
+      <End Role="Klijent" EntitySet="Klijents" />
+      <End Role="Predaje" EntitySet="Predajes" />
+    </AssociationSet>
+    <AssociationSet Name="VocePredaje" Association="HladnjacaDB.Store.VocePredaje">
+      <End Role="Voce" EntitySet="Voces" />
+      <End Role="Predaje" EntitySet="Predajes" />
+    </AssociationSet>
+    <AssociationSet Name="PoljoprivredniTehnicarOtkupljuje" Association="HladnjacaDB.Store.PoljoprivredniTehnicarOtkupljuje">
+      <End Role="PoljoprivredniTehnicar" EntitySet="Zaposlenis_PoljoprivredniTehnicar" />
+      <End Role="Otkupljuje" EntitySet="Otkupljujes" />
+    </AssociationSet>
+    <AssociationSet Name="VoceOtkupljuje" Association="HladnjacaDB.Store.VoceOtkupljuje">
+      <End Role="Voce" EntitySet="Voces" />
+      <End Role="Otkupljuje" EntitySet="Otkupljujes" />
+    </AssociationSet>
+    <AssociationSet Name="KartonOtkupljuje" Association="HladnjacaDB.Store.KartonOtkupljuje">
+      <End Role="Karton" EntitySet="Kartons" />
+      <End Role="Otkupljuje" EntitySet="Otkupljujes" />
+    </AssociationSet>
+    <AssociationSet Name="TransportPrenosiSe" Association="HladnjacaDB.Store.TransportPrenosiSe">
+      <End Role="Transport" EntitySet="Transports" />
+      <End Role="PrenosiSe" EntitySet="PrenosiSes" />
+    </AssociationSet>
+    <AssociationSet Name="OtkupljujePrenosiSe" Association="HladnjacaDB.Store.OtkupljujePrenosiSe">
+      <End Role="Otkupljuje" EntitySet="Otkupljujes" />
+      <End Role="PrenosiSe" EntitySet="PrenosiSes" />
+    </AssociationSet>
+    <AssociationSet Name="MagacionerObavlja" Association="HladnjacaDB.Store.MagacionerObavlja">
+      <End Role="Magacioner" EntitySet="Zaposlenis_Magacioner" />
+      <End Role="Obavlja" EntitySet="Obavljas" />
+    </AssociationSet>
+    <AssociationSet Name="TransportObavlja" Association="HladnjacaDB.Store.TransportObavlja">
+      <End Role="Transport" EntitySet="Transports" />
+      <End Role="Obavlja" EntitySet="Obavljas" />
+    </AssociationSet>
+    <AssociationSet Name="KomoraSmestaSe" Association="HladnjacaDB.Store.KomoraSmestaSe">
+      <End Role="Komora" EntitySet="Komoras" />
+      <End Role="SmestaSe" EntitySet="SmestaSes" />
+    </AssociationSet>
+    <AssociationSet Name="SmestaSeTransport" Association="HladnjacaDB.Store.SmestaSeTransport">
+      <End Role="SmestaSe" EntitySet="SmestaSes" />
+      <End Role="Transport" EntitySet="Transports" />
+    </AssociationSet>
+    <AssociationSet Name="OrganizacionaJedinicaOrganizacionaJedinica" Association="HladnjacaDB.Store.OrganizacionaJedinicaOrganizacionaJedinica">
+      <End Role="OrganizacionaJedinica" EntitySet="OrganizacionaJedinicas" />
+      <End Role="OrganizacionaJedinica1" EntitySet="OrganizacionaJedinicas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PoljoprivredniTehnicar_inherits_Zaposleni" Association="HladnjacaDB.Store.FK_PoljoprivredniTehnicar_inherits_Zaposleni">
+      <End Role="Zaposleni" EntitySet="Zaposlenis" />
+      <End Role="PoljoprivredniTehnicar" EntitySet="Zaposlenis_PoljoprivredniTehnicar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Magacioner_inherits_Zaposleni" Association="HladnjacaDB.Store.FK_Magacioner_inherits_Zaposleni">
+      <End Role="Zaposleni" EntitySet="Zaposlenis" />
+      <End Role="Magacioner" EntitySet="Zaposlenis_Magacioner" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Hladnjacas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NazivHladnjace" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OrganizacionaJedinicaId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Komoras">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="HladnjacaId" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NazivKomore" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HladnjacaId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrganizacionaJedinicas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Naziv" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OrganizacionaJedinicaId_nadredjena" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Zaposlenis">
+    <Key>
+      <PropertyRef Name="Mbr" />
+    </Key>
+    <Property Name="Mbr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Jmbg" Type="int" Nullable="false" />
+    <Property Name="Ime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prezime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Kategorija" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HladnjacaId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Klijents">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Adresa" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prezime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Jmbg" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ugovors">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="KlijentId" />
+      <PropertyRef Name="HladnjacaId" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tip" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DatumPotpisivanja" Type="datetime" Nullable="false" />
+    <Property Name="KlijentId" Type="int" Nullable="false" />
+    <Property Name="HladnjacaId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kartons">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="UgovorId" />
+      <PropertyRef Name="UgovorKlijentId" />
+      <PropertyRef Name="UgovorHladnjacaId" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Vrsta" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UgovorId" Type="int" Nullable="false" />
+    <Property Name="UgovorKlijentId" Type="int" Nullable="false" />
+    <Property Name="UgovorHladnjacaId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Voces">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Vrsta" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Predajes">
+    <Key>
+      <PropertyRef Name="KlijentId" />
+      <PropertyRef Name="VoceId" />
+    </Key>
+    <Property Name="KlijentId" Type="int" Nullable="false" />
+    <Property Name="VoceId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Otkupljujes">
+    <Key>
+      <PropertyRef Name="PoljoprivredniTehnicarMbr" />
+      <PropertyRef Name="VoceId" />
+    </Key>
+    <Property Name="PoljoprivredniTehnicarMbr" Type="int" Nullable="false" />
+    <Property Name="VoceId" Type="int" Nullable="false" />
+    <Property Name="KartonId" Type="int" Nullable="false" />
+    <Property Name="KartonUgovorId" Type="int" Nullable="false" />
+    <Property Name="KartonUgovorKlijentId" Type="int" Nullable="false" />
+    <Property Name="KartonUgovorHladnjacaId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Transports">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PrenosiSes">
+    <Key>
+      <PropertyRef Name="TransportId" />
+      <PropertyRef Name="OtkupljujePoljoprivredniTehnicarMbr" />
+      <PropertyRef Name="OtkupljujeVoceId" />
+    </Key>
+    <Property Name="TransportId" Type="int" Nullable="false" />
+    <Property Name="OtkupljujePoljoprivredniTehnicarMbr" Type="int" Nullable="false" />
+    <Property Name="OtkupljujeVoceId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Obavljas">
+    <Key>
+      <PropertyRef Name="MagacionerMbr" />
+      <PropertyRef Name="TransportId" />
+    </Key>
+    <Property Name="MagacionerMbr" Type="int" Nullable="false" />
+    <Property Name="TransportId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SmestaSes">
+    <Key>
+      <PropertyRef Name="TransportId" />
+      <PropertyRef Name="KomoraHladnjacaId" />
+      <PropertyRef Name="KomoraId" />
+    </Key>
+    <Property Name="KomoraId" Type="int" Nullable="false" />
+    <Property Name="KomoraHladnjacaId" Type="int" Nullable="false" />
+    <Property Name="TransportId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zaposlenis_PoljoprivredniTehnicar">
+    <Key>
+      <PropertyRef Name="Mbr" />
+    </Key>
+    <Property Name="Mbr" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zaposlenis_Magacioner">
+    <Key>
+      <PropertyRef Name="Mbr" />
+    </Key>
+    <Property Name="ObucenZaViljuskar" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Mbr" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="HladnjacaKomora">
+    <End Role="Hladnjaca" Type="HladnjacaDB.Store.Hladnjacas" Multiplicity="1" />
+    <End Role="Komora" Type="HladnjacaDB.Store.Komoras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hladnjaca">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Komora">
+        <PropertyRef Name="HladnjacaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HladnjacaOrganizacionaJedinica">
+    <End Role="Hladnjaca" Type="HladnjacaDB.Store.Hladnjacas" Multiplicity="*" />
+    <End Role="OrganizacionaJedinica" Type="HladnjacaDB.Store.OrganizacionaJedinicas" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="OrganizacionaJedinica">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Hladnjaca">
+        <PropertyRef Name="OrganizacionaJedinicaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KlijentUgovor">
+    <End Role="Klijent" Type="HladnjacaDB.Store.Klijents" Multiplicity="1" />
+    <End Role="Ugovor" Type="HladnjacaDB.Store.Ugovors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klijent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ugovor">
+        <PropertyRef Name="KlijentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HladnjacaUgovor">
+    <End Role="Hladnjaca" Type="HladnjacaDB.Store.Hladnjacas" Multiplicity="1" />
+    <End Role="Ugovor" Type="HladnjacaDB.Store.Ugovors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hladnjaca">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ugovor">
+        <PropertyRef Name="HladnjacaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HladnjacaZaposleni">
+    <End Role="Hladnjaca" Type="HladnjacaDB.Store.Hladnjacas" Multiplicity="1" />
+    <End Role="Zaposleni" Type="HladnjacaDB.Store.Zaposlenis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hladnjaca">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Zaposleni">
+        <PropertyRef Name="HladnjacaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UgovorKarton">
+    <End Role="Ugovor" Type="HladnjacaDB.Store.Ugovors" Multiplicity="1" />
+    <End Role="Karton" Type="HladnjacaDB.Store.Kartons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ugovor">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="KlijentId" />
+        <PropertyRef Name="HladnjacaId" />
+      </Principal>
+      <Dependent Role="Karton">
+        <PropertyRef Name="UgovorId" />
+        <PropertyRef Name="UgovorKlijentId" />
+        <PropertyRef Name="UgovorHladnjacaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KlijentPredaje">
+    <End Role="Klijent" Type="HladnjacaDB.Store.Klijents" Multiplicity="1" />
+    <End Role="Predaje" Type="HladnjacaDB.Store.Predajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klijent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Predaje">
+        <PropertyRef Name="KlijentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VocePredaje">
+    <End Role="Voce" Type="HladnjacaDB.Store.Voces" Multiplicity="1" />
+    <End Role="Predaje" Type="HladnjacaDB.Store.Predajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Voce">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Predaje">
+        <PropertyRef Name="VoceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PoljoprivredniTehnicarOtkupljuje">
+    <End Role="PoljoprivredniTehnicar" Type="HladnjacaDB.Store.Zaposlenis_PoljoprivredniTehnicar" Multiplicity="1" />
+    <End Role="Otkupljuje" Type="HladnjacaDB.Store.Otkupljujes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PoljoprivredniTehnicar">
+        <PropertyRef Name="Mbr" />
+      </Principal>
+      <Dependent Role="Otkupljuje">
+        <PropertyRef Name="PoljoprivredniTehnicarMbr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VoceOtkupljuje">
+    <End Role="Voce" Type="HladnjacaDB.Store.Voces" Multiplicity="1" />
+    <End Role="Otkupljuje" Type="HladnjacaDB.Store.Otkupljujes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Voce">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Otkupljuje">
+        <PropertyRef Name="VoceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KartonOtkupljuje">
+    <End Role="Karton" Type="HladnjacaDB.Store.Kartons" Multiplicity="1" />
+    <End Role="Otkupljuje" Type="HladnjacaDB.Store.Otkupljujes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Karton">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="UgovorId" />
+        <PropertyRef Name="UgovorKlijentId" />
+        <PropertyRef Name="UgovorHladnjacaId" />
+      </Principal>
+      <Dependent Role="Otkupljuje">
+        <PropertyRef Name="KartonId" />
+        <PropertyRef Name="KartonUgovorId" />
+        <PropertyRef Name="KartonUgovorKlijentId" />
+        <PropertyRef Name="KartonUgovorHladnjacaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TransportPrenosiSe">
+    <End Role="Transport" Type="HladnjacaDB.Store.Transports" Multiplicity="1" />
+    <End Role="PrenosiSe" Type="HladnjacaDB.Store.PrenosiSes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrenosiSe">
+        <PropertyRef Name="TransportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OtkupljujePrenosiSe">
+    <End Role="Otkupljuje" Type="HladnjacaDB.Store.Otkupljujes" Multiplicity="1" />
+    <End Role="PrenosiSe" Type="HladnjacaDB.Store.PrenosiSes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Otkupljuje">
+        <PropertyRef Name="PoljoprivredniTehnicarMbr" />
+        <PropertyRef Name="VoceId" />
+      </Principal>
+      <Dependent Role="PrenosiSe">
+        <PropertyRef Name="OtkupljujePoljoprivredniTehnicarMbr" />
+        <PropertyRef Name="OtkupljujeVoceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MagacionerObavlja">
+    <End Role="Magacioner" Type="HladnjacaDB.Store.Zaposlenis_Magacioner" Multiplicity="1" />
+    <End Role="Obavlja" Type="HladnjacaDB.Store.Obavljas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magacioner">
+        <PropertyRef Name="Mbr" />
+      </Principal>
+      <Dependent Role="Obavlja">
+        <PropertyRef Name="MagacionerMbr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TransportObavlja">
+    <End Role="Transport" Type="HladnjacaDB.Store.Transports" Multiplicity="1" />
+    <End Role="Obavlja" Type="HladnjacaDB.Store.Obavljas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Obavlja">
+        <PropertyRef Name="TransportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KomoraSmestaSe">
+    <End Role="Komora" Type="HladnjacaDB.Store.Komoras" Multiplicity="1" />
+    <End Role="SmestaSe" Type="HladnjacaDB.Store.SmestaSes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Komora">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="HladnjacaId" />
+      </Principal>
+      <Dependent Role="SmestaSe">
+        <PropertyRef Name="KomoraId" />
+        <PropertyRef Name="KomoraHladnjacaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SmestaSeTransport">
+    <End Role="SmestaSe" Type="HladnjacaDB.Store.SmestaSes" Multiplicity="*" />
+    <End Role="Transport" Type="HladnjacaDB.Store.Transports" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Transport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SmestaSe">
+        <PropertyRef Name="TransportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrganizacionaJedinicaOrganizacionaJedinica">
+    <End Role="OrganizacionaJedinica" Type="HladnjacaDB.Store.OrganizacionaJedinicas" Multiplicity="0..1" />
+    <End Role="OrganizacionaJedinica1" Type="HladnjacaDB.Store.OrganizacionaJedinicas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrganizacionaJedinica">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrganizacionaJedinica1">
+        <PropertyRef Name="OrganizacionaJedinicaId_nadredjena" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PoljoprivredniTehnicar_inherits_Zaposleni">
+    <End Role="Zaposleni" Type="HladnjacaDB.Store.Zaposlenis" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PoljoprivredniTehnicar" Type="HladnjacaDB.Store.Zaposlenis_PoljoprivredniTehnicar" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Zaposleni">
+        <PropertyRef Name="Mbr" />
+      </Principal>
+      <Dependent Role="PoljoprivredniTehnicar">
+        <PropertyRef Name="Mbr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Magacioner_inherits_Zaposleni">
+    <End Role="Zaposleni" Type="HladnjacaDB.Store.Zaposlenis" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Magacioner" Type="HladnjacaDB.Store.Zaposlenis_Magacioner" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Zaposleni">
+        <PropertyRef Name="Mbr" />
+      </Principal>
+      <Dependent Role="Magacioner">
+        <PropertyRef Name="Mbr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="HladnjacaDB" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="HladnjacaDBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Hladnjacas" EntityType="HladnjacaDB.Hladnjaca" />
+          <EntitySet Name="Komoras" EntityType="HladnjacaDB.Komora" />
+          <AssociationSet Name="HladnjacaKomora" Association="HladnjacaDB.HladnjacaKomora">
+            <End Role="Hladnjaca" EntitySet="Hladnjacas" />
+            <End Role="Komora" EntitySet="Komoras" />
+          </AssociationSet>
+          <EntitySet Name="OrganizacionaJedinicas" EntityType="HladnjacaDB.OrganizacionaJedinica" />
+          <AssociationSet Name="HladnjacaOrganizacionaJedinica" Association="HladnjacaDB.HladnjacaOrganizacionaJedinica">
+            <End Role="Hladnjaca" EntitySet="Hladnjacas" />
+            <End Role="OrganizacionaJedinica" EntitySet="OrganizacionaJedinicas" />
+          </AssociationSet>
+          <EntitySet Name="Zaposlenis" EntityType="HladnjacaDB.Zaposleni" />
+          <EntitySet Name="Klijents" EntityType="HladnjacaDB.Klijent" />
+          <EntitySet Name="Ugovors" EntityType="HladnjacaDB.Ugovor" />
+          <AssociationSet Name="KlijentUgovor" Association="HladnjacaDB.KlijentUgovor">
+            <End Role="Klijent" EntitySet="Klijents" />
+            <End Role="Ugovor" EntitySet="Ugovors" />
+          </AssociationSet>
+          <AssociationSet Name="HladnjacaUgovor" Association="HladnjacaDB.HladnjacaUgovor">
+            <End Role="Hladnjaca" EntitySet="Hladnjacas" />
+            <End Role="Ugovor" EntitySet="Ugovors" />
+          </AssociationSet>
+          <AssociationSet Name="HladnjacaZaposleni" Association="HladnjacaDB.HladnjacaZaposleni">
+            <End Role="Hladnjaca" EntitySet="Hladnjacas" />
+            <End Role="Zaposleni" EntitySet="Zaposlenis" />
+          </AssociationSet>
+          <EntitySet Name="Kartons" EntityType="HladnjacaDB.Karton" />
+          <AssociationSet Name="UgovorKarton" Association="HladnjacaDB.UgovorKarton">
+            <End Role="Ugovor" EntitySet="Ugovors" />
+            <End Role="Karton" EntitySet="Kartons" />
+          </AssociationSet>
+          <EntitySet Name="Voces" EntityType="HladnjacaDB.Voce" />
+          <EntitySet Name="Predajes" EntityType="HladnjacaDB.Predaje" />
+          <AssociationSet Name="KlijentPredaje" Association="HladnjacaDB.KlijentPredaje">
+            <End Role="Klijent" EntitySet="Klijents" />
+            <End Role="Predaje" EntitySet="Predajes" />
+          </AssociationSet>
+          <AssociationSet Name="VocePredaje" Association="HladnjacaDB.VocePredaje">
+            <End Role="Voce" EntitySet="Voces" />
+            <End Role="Predaje" EntitySet="Predajes" />
+          </AssociationSet>
+          <EntitySet Name="Otkupljujes" EntityType="HladnjacaDB.Otkupljuje" />
+          <AssociationSet Name="PoljoprivredniTehnicarOtkupljuje" Association="HladnjacaDB.PoljoprivredniTehnicarOtkupljuje">
+            <End Role="PoljoprivredniTehnicar" EntitySet="Zaposlenis" />
+            <End Role="Otkupljuje" EntitySet="Otkupljujes" />
+          </AssociationSet>
+          <AssociationSet Name="VoceOtkupljuje" Association="HladnjacaDB.VoceOtkupljuje">
+            <End Role="Voce" EntitySet="Voces" />
+            <End Role="Otkupljuje" EntitySet="Otkupljujes" />
+          </AssociationSet>
+          <AssociationSet Name="KartonOtkupljuje" Association="HladnjacaDB.KartonOtkupljuje">
+            <End Role="Karton" EntitySet="Kartons" />
+            <End Role="Otkupljuje" EntitySet="Otkupljujes" />
+          </AssociationSet>
+          <EntitySet Name="Transports" EntityType="HladnjacaDB.Transport" />
+          <EntitySet Name="PrenosiSes" EntityType="HladnjacaDB.PrenosiSe" />
+          <AssociationSet Name="TransportPrenosiSe" Association="HladnjacaDB.TransportPrenosiSe">
+            <End Role="Transport" EntitySet="Transports" />
+            <End Role="PrenosiSe" EntitySet="PrenosiSes" />
+          </AssociationSet>
+          <AssociationSet Name="OtkupljujePrenosiSe" Association="HladnjacaDB.OtkupljujePrenosiSe">
+            <End Role="Otkupljuje" EntitySet="Otkupljujes" />
+            <End Role="PrenosiSe" EntitySet="PrenosiSes" />
+          </AssociationSet>
+          <EntitySet Name="Obavljas" EntityType="HladnjacaDB.Obavlja" />
+          <AssociationSet Name="MagacionerObavlja" Association="HladnjacaDB.MagacionerObavlja">
+            <End Role="Magacioner" EntitySet="Zaposlenis" />
+            <End Role="Obavlja" EntitySet="Obavljas" />
+          </AssociationSet>
+          <AssociationSet Name="TransportObavlja" Association="HladnjacaDB.TransportObavlja">
+            <End Role="Transport" EntitySet="Transports" />
+            <End Role="Obavlja" EntitySet="Obavljas" />
+          </AssociationSet>
+          <EntitySet Name="SmestaSes" EntityType="HladnjacaDB.SmestaSe" />
+          <AssociationSet Name="KomoraSmestaSe" Association="HladnjacaDB.KomoraSmestaSe">
+            <End Role="Komora" EntitySet="Komoras" />
+            <End Role="SmestaSe" EntitySet="SmestaSes" />
+          </AssociationSet>
+          <AssociationSet Name="SmestaSeTransport" Association="HladnjacaDB.SmestaSeTransport">
+            <End Role="SmestaSe" EntitySet="SmestaSes" />
+            <End Role="Transport" EntitySet="Transports" />
+          </AssociationSet>
+          <AssociationSet Name="OrganizacionaJedinicaOrganizacionaJedinica" Association="HladnjacaDB.OrganizacionaJedinicaOrganizacionaJedinica">
+            <End Role="OrganizacionaJedinica" EntitySet="OrganizacionaJedinicas" />
+            <End Role="OrganizacionaJedinica1" EntitySet="OrganizacionaJedinicas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Hladnjaca">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NazivHladnjace" Type="String" Nullable="false" />
+          <NavigationProperty Name="Komoras" Relationship="HladnjacaDB.HladnjacaKomora" FromRole="Hladnjaca" ToRole="Komora" />
+          <NavigationProperty Name="OrganizacionaJedinica" Relationship="HladnjacaDB.HladnjacaOrganizacionaJedinica" FromRole="Hladnjaca" ToRole="OrganizacionaJedinica" />
+          <Property Name="OrganizacionaJedinicaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ugovors" Relationship="HladnjacaDB.HladnjacaUgovor" FromRole="Hladnjaca" ToRole="Ugovor" />
+          <NavigationProperty Name="Zaposlenis" Relationship="HladnjacaDB.HladnjacaZaposleni" FromRole="Hladnjaca" ToRole="Zaposleni" />
+        </EntityType>
+        <EntityType Name="Komora">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="HladnjacaId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NazivKomore" Type="String" Nullable="false" />
+          <NavigationProperty Name="Hladnjaca" Relationship="HladnjacaDB.HladnjacaKomora" FromRole="Komora" ToRole="Hladnjaca" />
+          <Property Name="HladnjacaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SmestaSes" Relationship="HladnjacaDB.KomoraSmestaSe" FromRole="Komora" ToRole="SmestaSe" />
+        </EntityType>
+        <Association Name="HladnjacaKomora">
+          <End Type="HladnjacaDB.Hladnjaca" Role="Hladnjaca" Multiplicity="1" />
+          <End Type="HladnjacaDB.Komora" Role="Komora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hladnjaca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Komora">
+              <PropertyRef Name="HladnjacaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OrganizacionaJedinica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" Nullable="false" />
+          <NavigationProperty Name="Hladnjacas" Relationship="HladnjacaDB.HladnjacaOrganizacionaJedinica" FromRole="OrganizacionaJedinica" ToRole="Hladnjaca" />
+          <NavigationProperty Name="Podredjena" Relationship="HladnjacaDB.OrganizacionaJedinicaOrganizacionaJedinica" FromRole="OrganizacionaJedinica" ToRole="OrganizacionaJedinica1" />
+          <NavigationProperty Name="Nadredjena" Relationship="HladnjacaDB.OrganizacionaJedinicaOrganizacionaJedinica" FromRole="OrganizacionaJedinica1" ToRole="OrganizacionaJedinica" />
+          <Property Name="OrganizacionaJedinicaId_nadredjena" Type="Int32" Nullable="true" />
+          </EntityType>
+        <Association Name="HladnjacaOrganizacionaJedinica">
+          <End Type="HladnjacaDB.Hladnjaca" Role="Hladnjaca" Multiplicity="*" />
+          <End Type="HladnjacaDB.OrganizacionaJedinica" Role="OrganizacionaJedinica" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="OrganizacionaJedinica">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Hladnjaca">
+              <PropertyRef Name="OrganizacionaJedinicaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Zaposleni">
+          <Key>
+            <PropertyRef Name="Mbr" />
+          </Key>
+          <Property Name="Mbr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Jmbg" Type="Int32" Nullable="false" />
+          <Property Name="Ime" Type="String" Nullable="false" />
+          <Property Name="Prezime" Type="String" Nullable="false" />
+          <Property Name="Kategorija" Type="String" Nullable="false" />
+          <NavigationProperty Name="Hladnjaca" Relationship="HladnjacaDB.HladnjacaZaposleni" FromRole="Zaposleni" ToRole="Hladnjaca" />
+          <Property Name="HladnjacaId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PoljoprivredniTehnicar" BaseType="HladnjacaDB.Zaposleni" >
+          <NavigationProperty Name="Otkupljujes" Relationship="HladnjacaDB.PoljoprivredniTehnicarOtkupljuje" FromRole="PoljoprivredniTehnicar" ToRole="Otkupljuje" />
+        </EntityType>
+        <EntityType Name="Magacioner" BaseType="HladnjacaDB.Zaposleni" >
+          <Property Name="ObucenZaViljuskar" Type="String" Nullable="false" />
+          <NavigationProperty Name="Obavljas" Relationship="HladnjacaDB.MagacionerObavlja" FromRole="Magacioner" ToRole="Obavlja" />
+        </EntityType>
+        <EntityType Name="Klijent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adresa" Type="String" Nullable="false" />
+          <Property Name="Ime" Type="String" Nullable="false" />
+          <Property Name="Prezime" Type="String" Nullable="false" />
+          <Property Name="Jmbg" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ugovors" Relationship="HladnjacaDB.KlijentUgovor" FromRole="Klijent" ToRole="Ugovor" />
+          <NavigationProperty Name="Predajes" Relationship="HladnjacaDB.KlijentPredaje" FromRole="Klijent" ToRole="Predaje" />
+        </EntityType>
+        <EntityType Name="Ugovor">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="KlijentId" />
+            <PropertyRef Name="HladnjacaId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tip" Type="String" Nullable="false" />
+          <Property Name="DatumPotpisivanja" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Klijent" Relationship="HladnjacaDB.KlijentUgovor" FromRole="Ugovor" ToRole="Klijent" />
+          <Property Name="KlijentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Hladnjaca" Relationship="HladnjacaDB.HladnjacaUgovor" FromRole="Ugovor" ToRole="Hladnjaca" />
+          <Property Name="HladnjacaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kartons" Relationship="HladnjacaDB.UgovorKarton" FromRole="Ugovor" ToRole="Karton" />
+        </EntityType>
+        <Association Name="KlijentUgovor">
+          <End Type="HladnjacaDB.Klijent" Role="Klijent" Multiplicity="1" />
+          <End Type="HladnjacaDB.Ugovor" Role="Ugovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klijent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ugovor">
+              <PropertyRef Name="KlijentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HladnjacaUgovor">
+          <End Type="HladnjacaDB.Hladnjaca" Role="Hladnjaca" Multiplicity="1" />
+          <End Type="HladnjacaDB.Ugovor" Role="Ugovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hladnjaca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ugovor">
+              <PropertyRef Name="HladnjacaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HladnjacaZaposleni">
+          <End Type="HladnjacaDB.Hladnjaca" Role="Hladnjaca" Multiplicity="1" />
+          <End Type="HladnjacaDB.Zaposleni" Role="Zaposleni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hladnjaca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Zaposleni">
+              <PropertyRef Name="HladnjacaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Karton">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="UgovorId" />
+            <PropertyRef Name="UgovorKlijentId" />
+            <PropertyRef Name="UgovorHladnjacaId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vrsta" Type="String" Nullable="false" />
+          <NavigationProperty Name="Ugovor" Relationship="HladnjacaDB.UgovorKarton" FromRole="Karton" ToRole="Ugovor" />
+          <Property Name="UgovorId" Type="Int32" Nullable="false" />
+          <Property Name="UgovorKlijentId" Type="Int32" Nullable="false" />
+          <Property Name="UgovorHladnjacaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Otkupljujes" Relationship="HladnjacaDB.KartonOtkupljuje" FromRole="Karton" ToRole="Otkupljuje" />
+        </EntityType>
+        <Association Name="UgovorKarton">
+          <End Type="HladnjacaDB.Ugovor" Role="Ugovor" Multiplicity="1" />
+          <End Type="HladnjacaDB.Karton" Role="Karton" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ugovor">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="KlijentId" />
+              <PropertyRef Name="HladnjacaId" />
+            </Principal>
+            <Dependent Role="Karton">
+              <PropertyRef Name="UgovorId" />
+              <PropertyRef Name="UgovorKlijentId" />
+              <PropertyRef Name="UgovorHladnjacaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Voce">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vrsta" Type="String" Nullable="false" />
+          <NavigationProperty Name="Predajes" Relationship="HladnjacaDB.VocePredaje" FromRole="Voce" ToRole="Predaje" />
+          <NavigationProperty Name="Otkupljujes" Relationship="HladnjacaDB.VoceOtkupljuje" FromRole="Voce" ToRole="Otkupljuje" />
+        </EntityType>
+        <EntityType Name="Predaje" >
+          <Key>
+            <PropertyRef Name="KlijentId" />
+            <PropertyRef Name="VoceId" />
+          </Key>
+          <NavigationProperty Name="Klijent" Relationship="HladnjacaDB.KlijentPredaje" FromRole="Predaje" ToRole="Klijent" />
+          <Property Name="KlijentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Voce" Relationship="HladnjacaDB.VocePredaje" FromRole="Predaje" ToRole="Voce" />
+          <Property Name="VoceId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="KlijentPredaje">
+          <End Type="HladnjacaDB.Klijent" Role="Klijent" Multiplicity="1" />
+          <End Type="HladnjacaDB.Predaje" Role="Predaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klijent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Predaje">
+              <PropertyRef Name="KlijentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VocePredaje">
+          <End Type="HladnjacaDB.Voce" Role="Voce" Multiplicity="1" />
+          <End Type="HladnjacaDB.Predaje" Role="Predaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voce">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Predaje">
+              <PropertyRef Name="VoceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Otkupljuje" >
+          <Key>
+            <PropertyRef Name="PoljoprivredniTehnicarMbr" />
+            <PropertyRef Name="VoceId" />
+          </Key>
+          <NavigationProperty Name="PoljoprivredniTehnicar" Relationship="HladnjacaDB.PoljoprivredniTehnicarOtkupljuje" FromRole="Otkupljuje" ToRole="PoljoprivredniTehnicar" />
+          <Property Name="PoljoprivredniTehnicarMbr" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Voce" Relationship="HladnjacaDB.VoceOtkupljuje" FromRole="Otkupljuje" ToRole="Voce" />
+          <Property Name="VoceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Karton" Relationship="HladnjacaDB.KartonOtkupljuje" FromRole="Otkupljuje" ToRole="Karton" />
+          <Property Name="KartonId" Type="Int32" Nullable="false" />
+          <Property Name="KartonUgovorId" Type="Int32" Nullable="false" />
+          <Property Name="KartonUgovorKlijentId" Type="Int32" Nullable="false" />
+          <Property Name="KartonUgovorHladnjacaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PrenosiSes" Relationship="HladnjacaDB.OtkupljujePrenosiSe" FromRole="Otkupljuje" ToRole="PrenosiSe" />
+        </EntityType>
+        <Association Name="PoljoprivredniTehnicarOtkupljuje">
+          <End Type="HladnjacaDB.PoljoprivredniTehnicar" Role="PoljoprivredniTehnicar" Multiplicity="1" />
+          <End Type="HladnjacaDB.Otkupljuje" Role="Otkupljuje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PoljoprivredniTehnicar">
+              <PropertyRef Name="Mbr" />
+            </Principal>
+            <Dependent Role="Otkupljuje">
+              <PropertyRef Name="PoljoprivredniTehnicarMbr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VoceOtkupljuje">
+          <End Type="HladnjacaDB.Voce" Role="Voce" Multiplicity="1" />
+          <End Type="HladnjacaDB.Otkupljuje" Role="Otkupljuje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voce">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Otkupljuje">
+              <PropertyRef Name="VoceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KartonOtkupljuje">
+          <End Type="HladnjacaDB.Karton" Role="Karton" Multiplicity="1" />
+          <End Type="HladnjacaDB.Otkupljuje" Role="Otkupljuje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Karton">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="UgovorId" />
+              <PropertyRef Name="UgovorKlijentId" />
+              <PropertyRef Name="UgovorHladnjacaId" />
+            </Principal>
+            <Dependent Role="Otkupljuje">
+              <PropertyRef Name="KartonId" />
+              <PropertyRef Name="KartonUgovorId" />
+              <PropertyRef Name="KartonUgovorKlijentId" />
+              <PropertyRef Name="KartonUgovorHladnjacaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Transport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="PrenosiSes" Relationship="HladnjacaDB.TransportPrenosiSe" FromRole="Transport" ToRole="PrenosiSe" />
+          <NavigationProperty Name="Obavljas" Relationship="HladnjacaDB.TransportObavlja" FromRole="Transport" ToRole="Obavlja" />
+          <NavigationProperty Name="SmestaSes" Relationship="HladnjacaDB.SmestaSeTransport" FromRole="Transport" ToRole="SmestaSe" />
+        </EntityType>
+        <EntityType Name="PrenosiSe" >
+          <Key>
+            <PropertyRef Name="TransportId" />
+            <PropertyRef Name="OtkupljujePoljoprivredniTehnicarMbr" />
+            <PropertyRef Name="OtkupljujeVoceId" />
+          </Key>
+          <NavigationProperty Name="Transport" Relationship="HladnjacaDB.TransportPrenosiSe" FromRole="PrenosiSe" ToRole="Transport" />
+          <Property Name="TransportId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Otkupljuje" Relationship="HladnjacaDB.OtkupljujePrenosiSe" FromRole="PrenosiSe" ToRole="Otkupljuje" />
+          <Property Name="OtkupljujePoljoprivredniTehnicarMbr" Type="Int32" Nullable="false" />
+          <Property Name="OtkupljujeVoceId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="TransportPrenosiSe">
+          <End Type="HladnjacaDB.Transport" Role="Transport" Multiplicity="1" />
+          <End Type="HladnjacaDB.PrenosiSe" Role="PrenosiSe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transport">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrenosiSe">
+              <PropertyRef Name="TransportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OtkupljujePrenosiSe">
+          <End Type="HladnjacaDB.Otkupljuje" Role="Otkupljuje" Multiplicity="1" />
+          <End Type="HladnjacaDB.PrenosiSe" Role="PrenosiSe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otkupljuje">
+              <PropertyRef Name="PoljoprivredniTehnicarMbr" />
+              <PropertyRef Name="VoceId" />
+            </Principal>
+            <Dependent Role="PrenosiSe">
+              <PropertyRef Name="OtkupljujePoljoprivredniTehnicarMbr" />
+              <PropertyRef Name="OtkupljujeVoceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Obavlja" >
+          <Key>
+            <PropertyRef Name="MagacionerMbr" />
+            <PropertyRef Name="TransportId" />
+          </Key>
+          <NavigationProperty Name="Magacioner" Relationship="HladnjacaDB.MagacionerObavlja" FromRole="Obavlja" ToRole="Magacioner" />
+          <Property Name="MagacionerMbr" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Transport" Relationship="HladnjacaDB.TransportObavlja" FromRole="Obavlja" ToRole="Transport" />
+          <Property Name="TransportId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="MagacionerObavlja">
+          <End Type="HladnjacaDB.Magacioner" Role="Magacioner" Multiplicity="1" />
+          <End Type="HladnjacaDB.Obavlja" Role="Obavlja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magacioner">
+              <PropertyRef Name="Mbr" />
+            </Principal>
+            <Dependent Role="Obavlja">
+              <PropertyRef Name="MagacionerMbr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TransportObavlja">
+          <End Type="HladnjacaDB.Transport" Role="Transport" Multiplicity="1" />
+          <End Type="HladnjacaDB.Obavlja" Role="Obavlja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transport">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Obavlja">
+              <PropertyRef Name="TransportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SmestaSe" >
+          <Key>
+            <PropertyRef Name="TransportId" />
+            <PropertyRef Name="KomoraHladnjacaId" />
+            <PropertyRef Name="KomoraId" />
+          </Key>
+          <NavigationProperty Name="Komora" Relationship="HladnjacaDB.KomoraSmestaSe" FromRole="SmestaSe" ToRole="Komora" />
+          <Property Name="KomoraId" Type="Int32" Nullable="false" />
+          <Property Name="KomoraHladnjacaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Transport" Relationship="HladnjacaDB.SmestaSeTransport" FromRole="SmestaSe" ToRole="Transport" />
+          <Property Name="TransportId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="KomoraSmestaSe">
+          <End Type="HladnjacaDB.Komora" Role="Komora" Multiplicity="1" />
+          <End Type="HladnjacaDB.SmestaSe" Role="SmestaSe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Komora">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="HladnjacaId" />
+            </Principal>
+            <Dependent Role="SmestaSe">
+              <PropertyRef Name="KomoraId" />
+              <PropertyRef Name="KomoraHladnjacaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SmestaSeTransport">
+          <End Type="HladnjacaDB.SmestaSe" Role="SmestaSe" Multiplicity="*" />
+          <End Type="HladnjacaDB.Transport" Role="Transport" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Transport">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SmestaSe">
+              <PropertyRef Name="TransportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OrganizacionaJedinicaOrganizacionaJedinica">
+          <End Type="HladnjacaDB.OrganizacionaJedinica" Role="OrganizacionaJedinica" Multiplicity="0..1" />
+          <End Type="HladnjacaDB.OrganizacionaJedinica" Role="OrganizacionaJedinica1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrganizacionaJedinica">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrganizacionaJedinica1">
+              <PropertyRef Name="OrganizacionaJedinicaId_nadredjena" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HladnjacaDBStoreContainer" CdmEntityContainer="HladnjacaDBContext">
+    <EntitySetMapping Name="Hladnjacas">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Hladnjaca)">
+        <MappingFragment StoreEntitySet="Hladnjacas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NazivHladnjace" ColumnName="NazivHladnjace" />
+          <ScalarProperty Name="OrganizacionaJedinicaId" ColumnName="OrganizacionaJedinicaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Komoras">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Komora)">
+        <MappingFragment StoreEntitySet="Komoras">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="HladnjacaId" ColumnName="HladnjacaId" />
+          <ScalarProperty Name="NazivKomore" ColumnName="NazivKomore" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrganizacionaJedinicas">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.OrganizacionaJedinica)">
+        <MappingFragment StoreEntitySet="OrganizacionaJedinicas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="OrganizacionaJedinicaId_nadredjena" ColumnName="OrganizacionaJedinicaId_nadredjena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zaposlenis">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Zaposleni)">
+        <MappingFragment StoreEntitySet="Zaposlenis">
+          <ScalarProperty Name="Mbr" ColumnName="Mbr" />
+          <ScalarProperty Name="Jmbg" ColumnName="Jmbg" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="Kategorija" ColumnName="Kategorija" />
+          <ScalarProperty Name="HladnjacaId" ColumnName="HladnjacaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.PoljoprivredniTehnicar)">
+        <MappingFragment StoreEntitySet="Zaposlenis_PoljoprivredniTehnicar">
+          <ScalarProperty Name="Mbr" ColumnName="Mbr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Magacioner)">
+        <MappingFragment StoreEntitySet="Zaposlenis_Magacioner">
+          <ScalarProperty Name="Mbr" ColumnName="Mbr" />
+          <ScalarProperty Name="ObucenZaViljuskar" ColumnName="ObucenZaViljuskar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Klijents">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Klijent)">
+        <MappingFragment StoreEntitySet="Klijents">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="Jmbg" ColumnName="Jmbg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ugovors">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Ugovor)">
+        <MappingFragment StoreEntitySet="Ugovors">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="KlijentId" ColumnName="KlijentId" />
+          <ScalarProperty Name="HladnjacaId" ColumnName="HladnjacaId" />
+          <ScalarProperty Name="Tip" ColumnName="Tip" />
+          <ScalarProperty Name="DatumPotpisivanja" ColumnName="DatumPotpisivanja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kartons">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Karton)">
+        <MappingFragment StoreEntitySet="Kartons">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UgovorId" ColumnName="UgovorId" />
+          <ScalarProperty Name="UgovorKlijentId" ColumnName="UgovorKlijentId" />
+          <ScalarProperty Name="UgovorHladnjacaId" ColumnName="UgovorHladnjacaId" />
+          <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Voces">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Voce)">
+        <MappingFragment StoreEntitySet="Voces">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Predajes">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Predaje)">
+        <MappingFragment StoreEntitySet="Predajes">
+          <ScalarProperty Name="KlijentId" ColumnName="KlijentId" />
+          <ScalarProperty Name="VoceId" ColumnName="VoceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Otkupljujes">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Otkupljuje)">
+        <MappingFragment StoreEntitySet="Otkupljujes">
+          <ScalarProperty Name="PoljoprivredniTehnicarMbr" ColumnName="PoljoprivredniTehnicarMbr" />
+          <ScalarProperty Name="VoceId" ColumnName="VoceId" />
+          <ScalarProperty Name="KartonId" ColumnName="KartonId" />
+          <ScalarProperty Name="KartonUgovorId" ColumnName="KartonUgovorId" />
+          <ScalarProperty Name="KartonUgovorKlijentId" ColumnName="KartonUgovorKlijentId" />
+          <ScalarProperty Name="KartonUgovorHladnjacaId" ColumnName="KartonUgovorHladnjacaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transports">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Transport)">
+        <MappingFragment StoreEntitySet="Transports">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrenosiSes">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.PrenosiSe)">
+        <MappingFragment StoreEntitySet="PrenosiSes">
+          <ScalarProperty Name="TransportId" ColumnName="TransportId" />
+          <ScalarProperty Name="OtkupljujePoljoprivredniTehnicarMbr" ColumnName="OtkupljujePoljoprivredniTehnicarMbr" />
+          <ScalarProperty Name="OtkupljujeVoceId" ColumnName="OtkupljujeVoceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Obavljas">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.Obavlja)">
+        <MappingFragment StoreEntitySet="Obavljas">
+          <ScalarProperty Name="MagacionerMbr" ColumnName="MagacionerMbr" />
+          <ScalarProperty Name="TransportId" ColumnName="TransportId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SmestaSes">
+      <EntityTypeMapping TypeName="IsTypeOf(HladnjacaDB.SmestaSe)">
+        <MappingFragment StoreEntitySet="SmestaSes">
+          <ScalarProperty Name="TransportId" ColumnName="TransportId" />
+          <ScalarProperty Name="KomoraHladnjacaId" ColumnName="KomoraHladnjacaId" />
+          <ScalarProperty Name="KomoraId" ColumnName="KomoraId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
