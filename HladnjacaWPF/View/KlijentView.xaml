@@ -55,10 +55,10 @@
                     <!--1. red u tabeli-->
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID"             Width="25"  Binding="{Binding Id,            UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Foreground="Black" FontSize="14"/>
-                        <DataGridTextColumn Header="Adresa"         Width="100" Binding="{Binding Adresa,        UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Foreground="Black" FontSize="14"/>
+                        <DataGridTextColumn Header="Adresa"         Width="130" Binding="{Binding Adresa,        UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Foreground="Black" FontSize="14"/>
                         <DataGridTextColumn Header="Ime"            Width="60"  Binding="{Binding Ime,           UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Foreground="Black" FontSize="14"/>
-                        <DataGridTextColumn Header="Prezime"        Width="80"  Binding="{Binding Prezime,       UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Foreground="Black" FontSize="14"/>
-                        <DataGridTextColumn Header="JMBG"           Width="130" Binding="{Binding Jmbg,          UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Foreground="Black" FontSize="14"/>
+                        <DataGridTextColumn Header="Prezime"        Width="100"  Binding="{Binding Prezime,       UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Foreground="Black" FontSize="14"/>
+                        <DataGridTextColumn Header="JMBG"           Width="120" Binding="{Binding Jmbg,          UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Foreground="Black" FontSize="14"/>
                     </DataGrid.Columns>
                 </DataGrid>
 

@@ -32,6 +32,20 @@ namespace DBModel.Helpers
                 return (from oj in db.OrganizacionaJedinicas select oj.OrganizacionaJedinicaId_nadredjena).ToList();
             }
         }
+        public List<int> GetAllKlIds()
+        {
+            using (var db = new HladnjacaDBContext())
+            {
+                return (from k in db.Klijents select k.Id).ToList();
+            }
+        }
+        public List<int> GetAllUgovorIds()
+        {
+            using (var db = new HladnjacaDBContext())
+            {
+                return (from k in db.Ugovors select k.Id).ToList();
+            }
+        }
         public List<int> GetAllOJIDS()
         {
             using (var db = new HladnjacaDBContext())
@@ -291,8 +305,8 @@ namespace DBModel.Helpers
         {
             Komora komora = new Komora()
             {
-                NazivKomore = naziv, 
-                HladnjacaId =  hladnjacaID
+                NazivKomore = naziv,
+                HladnjacaId = hladnjacaID
             };
 
             using (var db = new HladnjacaDBContext())
@@ -310,7 +324,7 @@ namespace DBModel.Helpers
                 return (from komora in db.Komoras select komora).ToList();
             }
         }
-        
+
         //Update
         public void UpdateKomora(int id, string naziv, int hladnjacaID)
         {
@@ -358,6 +372,250 @@ namespace DBModel.Helpers
 
         #endregion
 
+        #region Voce
+
+        //Read
+        public List<Voce> getAllVoces()
+        {
+            using (var db = new HladnjacaDBContext())
+            {
+                return (from voce in db.Voces select voce).ToList();
+            }
+        }
+
+        
+        //Create
+        public void CreateVoce(string vrsta)
+        {
+            Voce voce = new Voce()
+            {
+                Vrsta = vrsta
+            };
+
+            using (var db = new HladnjacaDBContext())
+            {
+                db.Voces.Add(voce);
+                db.SaveChanges();
+            }
+        }
+
+        
+
+        //Update
+        public void UpdateVoce(int id, string vrsta)
+        {
+            Voce voce;
+            using (var db = new HladnjacaDBContext())
+            {
+                voce = db.Voces.Where(k => k.Id == id).FirstOrDefault();
+            }
+
+            bool haveChanges = false;
+
+            if (!voce.Vrsta.Equals(vrsta))
+            {
+                voce.Vrsta = vrsta;
+                haveChanges = true;
+            }
+
+            if (haveChanges)
+            {
+                using (var db = new HladnjacaDBContext())
+                {
+                    db.Entry(voce).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+        }
+        //Remove
+        public void DeleteVoce(int voceID)
+        {
+            Voce voce;
+            using (var db = new HladnjacaDBContext())
+            {
+                voce = db.Voces.Where(k => k.Id == voceID).FirstOrDefault();
+                db.Entry(voce).State = System.Data.Entity.EntityState.Deleted;
+                db.SaveChanges();
+            }
+        }
+
+        #endregion
+
+        #region Ugovor
+        //Create
+        public void CreateUgovor(string tip, int klijentID, int hladnjacaID)
+        {
+            Ugovor ugovor = new Ugovor()
+            {
+                Tip = tip,
+                DatumPotpisivanja = DateTime.Now,
+                KlijentId = klijentID,
+                HladnjacaId = hladnjacaID
+            };
+
+            using (var db = new HladnjacaDBContext())
+            {
+                db.Ugovors.Add(ugovor);
+                db.SaveChanges();
+            }
+        }
+
+        //Read
+        public List<Ugovor> GetAllUgovors()
+        {
+            using (var db = new HladnjacaDBContext())
+            {
+                return (from u in db.Ugovors select u).ToList();
+            }
+        }
+
+        //Update
+        public void UpdateUgovor(int id, string tip)
+        {
+            Ugovor ugovor;
+            using (var db = new HladnjacaDBContext())
+            {
+                ugovor = db.Ugovors.Where(k => k.Id == id).FirstOrDefault();
+            }
+
+            bool haveChanges = false;
+
+            if (!ugovor.Tip.Equals(tip))
+            {
+                ugovor.Tip = tip;
+                haveChanges = true;
+            }
+
+            if (haveChanges)
+            {
+                using (var db = new HladnjacaDBContext())
+                {
+                    db.Entry(ugovor).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        //Remove
+        public void DeleteUgovor(int ugovorID)
+        {
+            Ugovor ugovor;
+            using (var db = new HladnjacaDBContext())
+            {
+                ugovor = db.Ugovors.Where(k => k.Id == ugovorID).FirstOrDefault();
+                db.Entry(ugovor).State = System.Data.Entity.EntityState.Deleted;
+                db.SaveChanges();
+            }
+        }
+
+
+        #endregion
+
+        #region Transport
+
+
+        //Create
+        public void CreateTransport()
+        {
+            Transport t = new Transport() { };
+
+            using (var db = new HladnjacaDBContext())
+            {
+                db.Transports.Add(t);
+                db.SaveChanges();
+            }
+        }
+        //Read
+        public List<Transport> GetAllTransports()
+        {
+            using (var db = new HladnjacaDBContext())
+            {
+                return (from t in db.Transports select t).ToList();
+            }
+        }
+
+        //Remove
+        public void DeleteTransport(int transID)
+        {
+            Transport transport;
+            using (var db = new HladnjacaDBContext())
+            {
+                transport = db.Transports.Where(k => k.Id == transID).FirstOrDefault();
+                db.Entry(transport).State = System.Data.Entity.EntityState.Deleted;
+                db.SaveChanges();
+            }
+        }
+
+        //Update
+        public void UpdateTransprot() { }
+
+
+        #endregion
+
+        #region Karton
+
+        //Read
+        public List<Karton> GetAllKartons()
+        {
+            using (var db = new HladnjacaDBContext())
+            {
+                return (from k in db.Kartons select k).ToList();
+            }
+        }
+
+        //Create
+        public void CreateKarton(string vrsta, int ugovorID, int klijentID, int hladnjacaID)
+        {
+            Karton karton = new Karton() {
+                Vrsta = vrsta
+            };
+
+            using (var db = new HladnjacaDBContext())
+            {
+                db.Kartons.Add(karton);
+                db.SaveChanges();
+            }
+        }
+
+        //Update
+        public void UpdateKarton(int id, string vrsta)
+        {
+            Karton karton;
+            using (var db = new HladnjacaDBContext())
+            {
+                karton = db.Kartons.Where(k => k.Id == id).FirstOrDefault();
+            }
+
+            bool haveChanges = false;
+
+            if (!karton.Vrsta.Equals(vrsta))
+            {
+                karton.Vrsta = vrsta;
+                haveChanges = true;
+            }
+            if (haveChanges)
+            {
+                using (var db = new HladnjacaDBContext())
+                {
+                    db.Entry(karton).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        //Remove
+        public void DeleteKarton(int kartonID)
+        {
+            Karton karton;
+            using (var db = new HladnjacaDBContext())
+            {
+                karton = db.Kartons.Where(k => k.Id == kartonID).FirstOrDefault();
+                db.Entry(karton).State = System.Data.Entity.EntityState.Deleted;
+                db.SaveChanges();
+            }
+        }
+
+        #endregion
 
     }
 }

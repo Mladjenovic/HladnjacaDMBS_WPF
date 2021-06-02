@@ -5,8 +5,85 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HladnjacaWPF.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="550" d:DesignWidth="950">
+    <DockPanel>
+        <DockPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" Margin="45,5,45,5" FontSize="13" Content="Ugovori" Grid.ColumnSpan="2" Foreground="Black" HorizontalContentAlignment="Center"/>
+                <DataGrid ItemsSource="{Binding Ugovors, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="8"
+                      SelectedIndex="{Binding CurrentIndex}"
+                      SelectedItem="{Binding SelectedItem}"
+                      Background="{x:Null}" 
+                      BorderBrush="AliceBlue"
+                      RowHeight="26"
+                      ColumnHeaderHeight="32"
+                      VerticalGridLinesBrush="White"
+                      FontSize="18"
+                      Foreground="Black"  
+                      CanUserAddRows="false"
+					  CanUserDeleteRows="False"
+					  SelectionMode="Single"
+					  CanUserResizeColumns="False"
+					  IsReadOnly="true"
+					  AutoGenerateColumns="False"                        
+					  HeadersVisibility="Column" 
+                      Margin="0,10" >
+                    <DataGrid.Resources>
+                        <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Style>
+                    </DataGrid.Resources>
+                    <!--1. red u tabeli-->
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID"                             Width="25"    Binding="{Binding Id,                          UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Foreground="Black" FontSize="14"/>
+                        <DataGridTextColumn Header="Tip"                            Width="95"   Binding="{Binding Tip,                         UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Foreground="Black" FontSize="14"/>
+                        <DataGridTextColumn Header="Datum potpisa"                  Width="140"   Binding="{Binding DatumPotpisivanja,           UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Foreground="Black" FontSize="14"/>
+                        <DataGridTextColumn Header="KL ID"                          Width="60"    Binding="{Binding KlijentId,                   UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Foreground="Black" FontSize="14"/>
+                        <DataGridTextColumn Header="HL ID"                          Width="60"    Binding="{Binding HladnjacaId,                 UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Foreground="Black" FontSize="14"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Button Content="Izmeni" Grid.Row="9" Grid.Column="0" Margin="45,5,45,5"  Background="White" Foreground="Black"  FontSize="18"  Command="{Binding ChangeCommand}"/>
+                <Button Content="Obrisi" Grid.Row="9" Grid.Column="1" Margin="45,5,45,5"  Background="White" Foreground="Black"  FontSize="18"  Command="{Binding DeleteCommand}"/>
+
+
+
+
+
+
+                <Label Grid.Column="2" Grid.Row="0" Margin="45,5,45,5" FontSize="13" Content="Novi Ugovor" Foreground="Black" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
+
+                <Label Grid.Row="1" Grid.Column="2"  Margin="5" Content="Tip:" Foreground="Black" FontSize="13"/>
+                <TextBox x:Name="tip"  Grid.Row="1" Grid.Column="3"  Margin="5" TextWrapping="Wrap" Text="{Binding Tip, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+                <Label Grid.Row="5" Grid.Column="2"  Margin="5" Content="Klijent Id:" Foreground="Black" FontSize="13"/>
+                <ComboBox x:Name="klijentID"  Grid.Row="5" Grid.Column="3"  Margin="5"  ItemsSource="{Binding Path=KlijentIds}" SelectedItem="{Binding ChoosenKlijentID, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Label Grid.Row="7" Grid.Column="2"  Margin="5" Content="Hladnjaca Id:" Foreground="Black" FontSize="13"/>
+                <ComboBox x:Name="hladnjacaID"  Grid.Row="7" Grid.Column="3"  Margin="5"  ItemsSource="{Binding Path=HladnjacaIds}" SelectedItem="{Binding ChoosenHladnjacaID, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Button Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Content="{Binding BtnContent}" Background="White" Foreground="Black"  FontSize="18" Command="{Binding AddCommand}"/>
+
+            </Grid>
+        </DockPanel>
+    </DockPanel>
 </UserControl>

@@ -13,6 +13,10 @@ namespace HladnjacaWPF.ViewModel
         private OrganizacionaJedinicaViewModel organizacionaJedinicaViewModel;
         private HladnjacaViewModel hladnjacaViewModel;
         private KomoraViewModel komoraViewModel;
+        private VoceViewModel voceViewModel;
+        private UgovorViewModel ugovorViewModel;
+        private TransportViewModel transportViewModel;
+        private KartonViewModel kartonViewModel;
 
         public MyICommand<string> NavCommand { get; private set; }
 
@@ -33,6 +37,10 @@ namespace HladnjacaWPF.ViewModel
             organizacionaJedinicaViewModel = new OrganizacionaJedinicaViewModel();
             hladnjacaViewModel = new HladnjacaViewModel();
             komoraViewModel = new KomoraViewModel();
+            voceViewModel = new VoceViewModel();
+            ugovorViewModel = new UgovorViewModel();
+            transportViewModel = new TransportViewModel();
+            kartonViewModel = new KartonViewModel();
 
             NavCommand = new MyICommand<string>(OnNav);
             currentViewModel = klijentViewModel;
@@ -46,6 +54,10 @@ namespace HladnjacaWPF.ViewModel
                 case "2": CurrentViewModel = organizacionaJedinicaViewModel; break;
                 case "3": CurrentViewModel = hladnjacaViewModel; break;
                 case "4": CurrentViewModel = komoraViewModel; break;
+                case "5": CurrentViewModel = voceViewModel; break;
+                case "6": CurrentViewModel = ugovorViewModel; break;
+                case "7": CurrentViewModel = transportViewModel; break;
+                case "8": CurrentViewModel = kartonViewModel; break;
                 default:
                     break;
             }

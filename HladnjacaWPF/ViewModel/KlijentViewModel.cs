@@ -130,12 +130,6 @@ namespace HladnjacaWPF.ViewModel
 
         #endregion
 
-        #region Validacija
-
-
-
-        #endregion
-
         #region Contructori i Metode
 
         public MyICommand AddCommand { get; set; }
@@ -157,27 +151,32 @@ namespace HladnjacaWPF.ViewModel
 
         public void OnAdd()
         {
-            if (!isUpdated)
+            if (Validate())
             {
-                DbHandler.Instance.CreateKlijent(Adresa, Ime, Prezime, Jmbg);
-                Klijenti.Clear();
-                DbHandler.Instance.GetAllKlijents().ForEach(klijent => Klijenti.Add(klijent));
-            }
-            else if (isUpdated)
-            {
-                BtnContent = "Update";
-                MessageBox.Show("Update data!");
-                DbHandler.Instance.UpdateKlijent(SelectedItem.Id, Adresa, Ime, Prezime, Jmbg);
+                if (!isUpdated)
+                {
+                    DbHandler.Instance.CreateKlijent(Adresa, Ime, Prezime, Jmbg);
+                    Klijenti.Clear();
+                    DbHandler.Instance.GetAllKlijents().ForEach(klijent => Klijenti.Add(klijent));
+                }
+                else if (isUpdated)
+                {
+                    BtnContent = "Update";
+                    MessageBox.Show("Update data!");
+                    DbHandler.Instance.UpdateKlijent(SelectedItem.Id, Adresa, Ime, Prezime, Jmbg);
 
-                Klijenti.Clear();
-                DbHandler.Instance.GetAllKlijents().ForEach(klijent => Klijenti.Add(klijent));
+                    Klijenti.Clear();
+                    DbHandler.Instance.GetAllKlijents().ForEach(klijent => Klijenti.Add(klijent));
 
-                isUpdated = false;
-                Adresa = "";
-                Ime = "";
-                Prezime = "";
-                BtnContent = "Add";
+                    isUpdated = false;
+                    Adresa = "";
+                    Ime = "";
+                    Prezime = "";
+                    Jmbg = 0;
+                    BtnContent = "Add";
+                }
             }
+
         }
 
         public void OnSaveChanges()
@@ -190,12 +189,39 @@ namespace HladnjacaWPF.ViewModel
             isUpdated = true;
             BtnContent = "Update";
         }
-        
+
         public void OnDelete()
         {
             int klijentID = Klijenti.ElementAt(currentIndex).Id;
             DbHandler.Instance.DeleteKlijent(klijentID);
             Klijenti.RemoveAt(CurrentIndex);
+        }
+
+        private bool Validate()
+        {
+            if (Adresa.Equals(string.Empty))
+            {
+                System.Windows.MessageBox.Show("Adresa ne sme biti prazna!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (Ime.Equals(String.Empty))
+            {
+                System.Windows.MessageBox.Show("Ime ne sme biti prazna!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (Prezime.Equals(String.Empty))
+            {
+                System.Windows.MessageBox.Show("Prezime ne sme biti prazna!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (Jmbg <= 0 || string.IsNullOrWhiteSpace(Jmbg.ToString()))
+            {
+                System.Windows.MessageBox.Show("Prezime ne sme biti prazna!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            return true;
+
         }
 
         #endregion

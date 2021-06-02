@@ -22,6 +22,18 @@
         <DataTemplate DataType="{x:Type viewModels:KomoraViewModel}">
             <views:KomoraView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:VoceViewModel}">
+            <views:VoceView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:UgovorViewModel}">
+            <views:UgovorView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:TransportViewModel}">
+            <views:TransportView/>
+        </DataTemplate>   
+        <DataTemplate DataType="{x:Type viewModels:KartonViewModel}">
+            <views:KartonView/>
+        </DataTemplate>
     </Window.Resources>
 
     <DockPanel>
@@ -34,6 +46,14 @@
                           CommandParameter="3"/>
             <MenuItem Header="Komore" Command="{Binding NavCommand}"  FontSize="12" Padding="10" FontWeight="Bold" 
                           CommandParameter="4"/>
+            <MenuItem Header="Voce" Command="{Binding NavCommand}"  FontSize="12" Padding="10" FontWeight="Bold" 
+                          CommandParameter="5"/>
+            <MenuItem Header="Ugovori" Command="{Binding NavCommand}"  FontSize="12" Padding="10" FontWeight="Bold" 
+                          CommandParameter="6"/>
+            <MenuItem Header="Transporti" Command="{Binding NavCommand}"  FontSize="12" Padding="10" FontWeight="Bold" 
+                          CommandParameter="7"/>
+            <MenuItem Header="Karoni" Command="{Binding NavCommand}"  FontSize="12" Padding="10" FontWeight="Bold" 
+                          CommandParameter="8"/>
         </Menu>
         <ContentControl DockPanel.Dock="Bottom" Canvas.Left="auto" Canvas.Right="auto" Content="{Binding CurrentViewModel}"/>
     </DockPanel>
