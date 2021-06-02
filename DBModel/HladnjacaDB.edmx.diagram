@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9e266b5c729544798063b5577cb3d462" Name="Diagram1" ZoomLevel="64" >
+      <Diagram DiagramId="9e266b5c729544798063b5577cb3d462" Name="Diagram1" ZoomLevel="71" >
         <EntityTypeShape EntityType="HladnjacaDB.Hladnjaca" Width="2" PointX="17.875" PointY="2" />
         <EntityTypeShape EntityType="HladnjacaDB.Komora" Width="1.5" PointX="17.875" PointY="5.125" />
         <AssociationConnector Association="HladnjacaDB.HladnjacaKomora" />
