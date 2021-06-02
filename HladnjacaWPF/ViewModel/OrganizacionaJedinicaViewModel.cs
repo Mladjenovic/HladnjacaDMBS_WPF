@@ -120,26 +120,30 @@ namespace HladnjacaWPF.ViewModel
 
         public void OnAdd()
         {
-            if (!isUpdated)
+            if (Validate())
             {
-                DbHandler.Instance.CreateOrganizacionaJedinica(Naziv, OrganizacionaJedinicaId_nadredjena);
-                OrganizacioneJedinice.Clear();
-                DbHandler.Instance.GetAllOrganizacionaJedinicas().ForEach(oj => OrganizacioneJedinice.Add(oj));
-            }
-            else if (isUpdated)
-            {
-                BtnContent = "Update";
-                MessageBox.Show("Update data!");
-                DbHandler.Instance.UpdateOrganizacionaJedinica(SelectedItem.Id, Naziv, OrganizacionaJedinicaId_nadredjena);
+                if (!isUpdated)
+                {
+                    DbHandler.Instance.CreateOrganizacionaJedinica(Naziv, OrganizacionaJedinicaId_nadredjena);
+                    OrganizacioneJedinice.Clear();
+                    DbHandler.Instance.GetAllOrganizacionaJedinicas().ForEach(oj => OrganizacioneJedinice.Add(oj));
+                }
+                else if (isUpdated)
+                {
+                    BtnContent = "Update";
+                    MessageBox.Show("Update data!");
+                    DbHandler.Instance.UpdateOrganizacionaJedinica(SelectedItem.Id, Naziv, OrganizacionaJedinicaId_nadredjena);
 
-                OrganizacioneJedinice.Clear();
-                DbHandler.Instance.GetAllOrganizacionaJedinicas().ForEach(oj => OrganizacioneJedinice.Add(oj));
+                    OrganizacioneJedinice.Clear();
+                    DbHandler.Instance.GetAllOrganizacionaJedinicas().ForEach(oj => OrganizacioneJedinice.Add(oj));
 
-                isUpdated = false;
-                Naziv = "";
-                OrganizacionaJedinicaId_nadredjena = null;
-                BtnContent = "Add";
+                    isUpdated = false;
+                    Naziv = "";
+                    OrganizacionaJedinicaId_nadredjena = null;
+                    BtnContent = "Add";
+                }
             }
+                
         }
         public void OnSaveChanges()
         {
@@ -154,6 +158,16 @@ namespace HladnjacaWPF.ViewModel
             int ojID = OrganizacioneJedinice.ElementAt(currentIndex).Id;
             DbHandler.Instance.DeleteOrganizacionaJedinica(ojID);
             OrganizacioneJedinice.RemoveAt(CurrentIndex);
+        }
+
+        private bool Validate()
+        {
+            if (string.IsNullOrEmpty(Naziv))
+            {
+                System.Windows.MessageBox.Show("naziv ne sme biti prazan!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            return true;
         }
 
 

@@ -105,24 +105,27 @@ namespace HladnjacaWPF.ViewModel
 
         public void OnAdd()
         {
-            if (!isUpdated)
+            if (Validate())
             {
-                DbHandler.Instance.CreateVoce(Vrsta);
-                Voces.Clear();
-                DbHandler.Instance.getAllVoces().ForEach(voce => Voces.Add(voce));
-            }
-            else if (isUpdated)
-            {
-                BtnContent = "Update";
-                MessageBox.Show("Updated data!");
-                DbHandler.Instance.UpdateVoce(SelectedItem.Id, Vrsta);
+                if (!isUpdated)
+                {
+                    DbHandler.Instance.CreateVoce(Vrsta);
+                    Voces.Clear();
+                    DbHandler.Instance.getAllVoces().ForEach(voce => Voces.Add(voce));
+                }
+                else if (isUpdated)
+                {
+                    BtnContent = "Update";
+                    MessageBox.Show("Updated data!");
+                    DbHandler.Instance.UpdateVoce(SelectedItem.Id, Vrsta);
 
-                Voces.Clear();
-                DbHandler.Instance.getAllVoces().ForEach(voce => Voces.Add(voce));
+                    Voces.Clear();
+                    DbHandler.Instance.getAllVoces().ForEach(voce => Voces.Add(voce));
 
-                isUpdated = false;
-                Vrsta = "";
-                BtnContent = "Add";
+                    isUpdated = false;
+                    Vrsta = "";
+                    BtnContent = "Add";
+                }
             }
         }
 
@@ -139,6 +142,17 @@ namespace HladnjacaWPF.ViewModel
             DbHandler.Instance.DeleteVoce(voceid);
             Voces.RemoveAt(CurrentIndex);
         }
+
+        private bool Validate()
+        {
+            if (string.IsNullOrEmpty(Vrsta))
+            {
+                System.Windows.MessageBox.Show("Vrsta ne sme biti prazan!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            return true;
+        }
+
 
 
 

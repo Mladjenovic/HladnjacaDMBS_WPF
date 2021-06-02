@@ -138,25 +138,29 @@ namespace HladnjacaWPF.ViewModel
 
         public void OnAdd()
         {
-            if (!isUpdated)
+            if (Validate())
             {
-                DbHandler.Instance.CreateHladnjaca(NazivHladnjace, ChoosenOjID);
-                Hladnjace.Clear();
-                DbHandler.Instance.GetAllHladnjacas().ForEach(hladnjaca => Hladnjace.Add(hladnjaca));
-            }
-            else if (isUpdated)
-            {
-                BtnContent = "Update";
-                MessageBox.Show("Updated data!");
-                DbHandler.Instance.UpdateHladnnjaca(SelectedItem.Id, NazivHladnjace, ChoosenOjID);
+                if (!isUpdated)
+                {
+                    DbHandler.Instance.CreateHladnjaca(NazivHladnjace, ChoosenOjID);
+                    Hladnjace.Clear();
+                    DbHandler.Instance.GetAllHladnjacas().ForEach(hladnjaca => Hladnjace.Add(hladnjaca));
+                }
+                else if (isUpdated)
+                {
+                    BtnContent = "Update";
+                    MessageBox.Show("Updated data!");
+                    DbHandler.Instance.UpdateHladnnjaca(SelectedItem.Id, NazivHladnjace, ChoosenOjID);
 
-                Hladnjace.Clear();
-                DbHandler.Instance.GetAllHladnjacas().ForEach(hladnjaca => Hladnjace.Add(hladnjaca));
+                    Hladnjace.Clear();
+                    DbHandler.Instance.GetAllHladnjacas().ForEach(hladnjaca => Hladnjace.Add(hladnjaca));
 
-                isUpdated = false;
-                NazivHladnjace = "";
-                BtnContent = "Add";
+                    isUpdated = false;
+                    NazivHladnjace = "";
+                    BtnContent = "Add";
+                }
             }
+            
         }
 
         public void OnSaveChanges()
@@ -173,6 +177,21 @@ namespace HladnjacaWPF.ViewModel
             int hladnjacaID = Hladnjace.ElementAt(currentIndex).Id;
             DbHandler.Instance.DeleteHladnjaca(hladnjacaID);
             Hladnjace.RemoveAt(CurrentIndex);
+        }
+
+        private bool Validate()
+        {
+            if (string.IsNullOrEmpty(NazivHladnjace))
+            {
+                System.Windows.MessageBox.Show("NazivHladnjace ne sme biti prazan!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if(ChoosenOjID <= 0 || string.IsNullOrWhiteSpace(ChoosenOjID.ToString()))
+            {
+                System.Windows.MessageBox.Show("OJ Id ne sme biti prazan!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            return true;
         }
 
 

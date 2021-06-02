@@ -199,24 +199,24 @@ namespace HladnjacaWPF.ViewModel
 
         private bool Validate()
         {
-            if (Adresa.Equals(string.Empty))
+            if (string.IsNullOrEmpty(Adresa))
             {
                 System.Windows.MessageBox.Show("Adresa ne sme biti prazna!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            else if (Ime.Equals(String.Empty))
+            else if (string.IsNullOrEmpty(Ime))
             {
                 System.Windows.MessageBox.Show("Ime ne sme biti prazna!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            else if (Prezime.Equals(String.Empty))
+            else if (string.IsNullOrEmpty(Prezime))
             {
                 System.Windows.MessageBox.Show("Prezime ne sme biti prazna!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             else if (Jmbg <= 0 || string.IsNullOrWhiteSpace(Jmbg.ToString()))
             {
-                System.Windows.MessageBox.Show("Prezime ne sme biti prazna!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show("Jmbg ne sme biti prazna!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
 

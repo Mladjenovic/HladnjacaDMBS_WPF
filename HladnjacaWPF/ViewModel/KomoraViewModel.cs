@@ -133,24 +133,27 @@ namespace HladnjacaWPF.ViewModel
 
         public void OnAdd()
         {
-            if (!isUpdated)
+            if (Validate())
             {
-                DbHandler.Instance.CreateKomora(NazivKomore, ChoosenHlID);
-                Komore.Clear();
-                DbHandler.Instance.GetAllKomoras().ForEach(komora => Komore.Add(komora));
-            }
-            else if (isUpdated)
-            {
-                BtnContent = "Update";
-                MessageBox.Show("Updated data!");
-                DbHandler.Instance.UpdateKomora(SelectedItem.Id, NazivKomore, ChoosenHlID);
+                if (!isUpdated)
+                {
+                    DbHandler.Instance.CreateKomora(NazivKomore, ChoosenHlID);
+                    Komore.Clear();
+                    DbHandler.Instance.GetAllKomoras().ForEach(komora => Komore.Add(komora));
+                }
+                else if (isUpdated)
+                {
+                    BtnContent = "Update";
+                    MessageBox.Show("Updated data!");
+                    DbHandler.Instance.UpdateKomora(SelectedItem.Id, NazivKomore, ChoosenHlID);
 
-                Komore.Clear();
-                DbHandler.Instance.GetAllKomoras().ForEach(komora => Komore.Add(komora));
+                    Komore.Clear();
+                    DbHandler.Instance.GetAllKomoras().ForEach(komora => Komore.Add(komora));
 
-                isUpdated = false;
-                NazivKomore = "";
-                BtnContent = "Add";
+                    isUpdated = false;
+                    NazivKomore = "";
+                    BtnContent = "Add";
+                }
             }
         }
 
@@ -168,6 +171,21 @@ namespace HladnjacaWPF.ViewModel
             int komoraID = Komore.ElementAt(currentIndex).Id;
             DbHandler.Instance.DeleteKomora(komoraID);
             Komore.RemoveAt(CurrentIndex);
+        }
+
+        private bool Validate()
+        {
+            if (string.IsNullOrEmpty(NazivKomore))
+            {
+                System.Windows.MessageBox.Show("NazivKomore ne sme biti prazan!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (ChoosenHlID <= 0 || string.IsNullOrWhiteSpace(ChoosenHlID.ToString()))
+            {
+                System.Windows.MessageBox.Show("ID Hladnnjace Id ne sme biti prazan!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            return true;
         }
 
         #endregion

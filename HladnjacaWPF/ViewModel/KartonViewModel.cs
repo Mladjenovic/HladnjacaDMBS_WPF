@@ -193,25 +193,28 @@ namespace HladnjacaWPF.ViewModel
 
         public void OnAdd()
         {
-            if (!isUpdated)
+            if (Validate())
             {
-                DbHandler.Instance.CreateKarton(Vrsta, UgovorId, UgovorKlijentId, UgovorHladnjacaId);
-                Kartons.Clear();
-                DbHandler.Instance.GetAllKartons().ForEach(k => Kartons.Add(k));
+                if (!isUpdated)
+                {
+                    DbHandler.Instance.CreateKarton(Vrsta, UgovorId, UgovorKlijentId, UgovorHladnjacaId);
+                    Kartons.Clear();
+                    DbHandler.Instance.GetAllKartons().ForEach(k => Kartons.Add(k));
 
-            }
-            else if (isUpdated)
-            {
-                BtnContent = "Update";
-                MessageBox.Show("Updated data!");
-                DbHandler.Instance.UpdateKarton(SelectedItem.Id, SelectedItem.Vrsta);
+                }
+                else if (isUpdated)
+                {
+                    BtnContent = "Update";
+                    MessageBox.Show("Updated data!");
+                    DbHandler.Instance.UpdateKarton(SelectedItem.Id, SelectedItem.Vrsta);
 
-                Kartons.Clear();
-                DbHandler.Instance.GetAllKartons().ForEach(k => Kartons.Add(k));
+                    Kartons.Clear();
+                    DbHandler.Instance.GetAllKartons().ForEach(k => Kartons.Add(k));
 
-                isUpdated = false;
-                Vrsta = "";
-                BtnContent = "Add";
+                    isUpdated = false;
+                    Vrsta = "";
+                    BtnContent = "Add";
+                }
             }
         }
         public void OnSaveChanges()
@@ -226,6 +229,16 @@ namespace HladnjacaWPF.ViewModel
             int kartonID = Kartons.ElementAt(currentIndex).Id;
             DbHandler.Instance.DeleteHladnjaca(kartonID);
             Kartons.RemoveAt(CurrentIndex);
+        }
+
+        private bool Validate()
+        {
+            if (string.IsNullOrEmpty(Vrsta))
+            {
+                System.Windows.MessageBox.Show("Vrsta ne sme biti prazan!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            return true;
         }
 
         #endregion

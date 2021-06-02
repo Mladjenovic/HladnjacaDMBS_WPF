@@ -175,25 +175,27 @@ namespace HladnjacaWPF.ViewModel
 
         public void OnAdd()
         {
-
-            if (!isUpdated)
+            if (Validate())
             {
-                DbHandler.Instance.CreateUgovor(Tip, ChoosenKlijentID, ChoosenHladnjacaID);
-                Ugovors.Clear();
-                DbHandler.Instance.GetAllUgovors().ForEach(u => Ugovors.Add(u));
-            }
-            else if (isUpdated)
-            {
-                BtnContent = "Update";
-                MessageBox.Show("Updated data!");
-                DbHandler.Instance.UpdateUgovor(SelectedItem.Id, Tip);
+                if (!isUpdated)
+                {
+                    DbHandler.Instance.CreateUgovor(Tip, ChoosenKlijentID, ChoosenHladnjacaID);
+                    Ugovors.Clear();
+                    DbHandler.Instance.GetAllUgovors().ForEach(u => Ugovors.Add(u));
+                }
+                else if (isUpdated)
+                {
+                    BtnContent = "Update";
+                    MessageBox.Show("Updated data!");
+                    DbHandler.Instance.UpdateUgovor(SelectedItem.Id, Tip);
 
-                Ugovors.Clear();
-                DbHandler.Instance.GetAllUgovors().ForEach(u => Ugovors.Add(u));
+                    Ugovors.Clear();
+                    DbHandler.Instance.GetAllUgovors().ForEach(u => Ugovors.Add(u));
 
-                isUpdated = false;
-                Tip = "";
-                BtnContent = "Add";
+                    isUpdated = false;
+                    Tip = "";
+                    BtnContent = "Add";
+                }
             }
         }
         public void OnSaveChanges()
@@ -212,6 +214,25 @@ namespace HladnjacaWPF.ViewModel
             Ugovors.RemoveAt(CurrentIndex);
         }
 
+        private bool Validate()
+        {
+            if (string.IsNullOrEmpty(Tip))
+            {
+                System.Windows.MessageBox.Show("Tip ne sme biti prazan!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (ChoosenHladnjacaID <= 0 || string.IsNullOrWhiteSpace(ChoosenHladnjacaID.ToString()))
+            {
+                System.Windows.MessageBox.Show("ID Hladnnjace Id ne sme biti prazan!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else if (ChoosenKlijentID <= 0 || string.IsNullOrWhiteSpace(ChoosenKlijentID.ToString()))
+            {
+                System.Windows.MessageBox.Show("ID Klijenta Id ne sme biti prazan!", "Greska!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            return true;
+        }
         #endregion
     }
 }
